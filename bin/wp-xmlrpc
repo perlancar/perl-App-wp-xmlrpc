@@ -22,6 +22,7 @@ Perinci::CmdLine::Any->new(
 )->run;
 
 # ABSTRACT: A thin CLI for accessing WordPress XML-RPC API
+# PODNAME:
 
 =head1 SYNOPSIS
 
