@@ -82,13 +82,16 @@ Some of the functions:
 
  % wp-xmlrpc wp.deleteTerm 2345
 
+
  % wp-xmlrpc wp.getComments ;# list comments
  % wp-xmlrpc wp.getCommentCount 13 ;# get number of comments for a post
  % wp-xmlrpc wp.getComment 9983 ;# get a comment by ID
 
+
  % wp-xmlrpc wp.getOptions ;# get all options
  % wp-xmlrpc wp.getOptions '["blog_title","blog_tagline"]' ;# get specified options only
  % wp-xmlrpc wp.setOptions '{"blog_title":"New title", "blog_tagline":"New tagline"}'
+
 
  % wp-xmlrpc wp.getProfile
  % wp-xmlrpc wp.editProfile '{"bio":"Blah blah blah"}'
