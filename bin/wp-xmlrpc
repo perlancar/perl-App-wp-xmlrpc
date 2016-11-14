@@ -1,0 +1,107 @@
+#!perl
+
+# DATE
+# VERSION
+
+use 5.010001;
+use strict;
+use warnings;
+
+use Perinci::CmdLine::Any;
+use App::wp::xmlrpc;
+
+my $subcommands = {};
+for my $meth (keys %App::wp::xmlrpc::API_Methods) {
+    (my $funcname = $meth) =~ s/\W+/_/g;
+    $subcommands->{$meth} = { url => "/App/wp/xmlrpc/$funcname" };
+}
+
+Perinci::CmdLine::Any->new(
+    url => '/App/wp/xmlrpc/',
+    subcommands => $subcommands,
+)->run;
+
+# ABSTRACT: A thin CLI for accessing WordPress XML-RPC API
+
+=head1 SYNOPSIS
+
+In C<~/wp-xmlrpc.conf>, put your API credentials:
+
+ proxy=https://YOURBLOGNAME.wordpress.com/xmlrpc.php
+ username=YOURUSERNAME
+ password=YOURPASSWORD
+
+Then:
+
+ % wp-xmlrpc wp.getPost 13
+
+You can also put multiple credentials in the config file via profiles:
+
+ [profile=blog1]
+ proxy=https://BLOG1NAME.wordpress.com/xmlrpc.php
+ username=YOURUSERNAME
+ password=YOURPASSWORD
+
+ [profile=blog2]
+ proxy=https://BLOG2NAME.wordpress.com/xmlrpc.php
+ username=YOURUSERNAME
+ password=YOURPASSWORD
+
+then:
+
+ % wp-xmlrpc --config-profile blog1 wp.getPost 13
+
+Some of the functions:
+
+ % wp-xmlrpc wp.getPosts ;# list all posts
+
+ % wp-xmlrpc wp.newPost '{"post_content":"This is a test blog post"}' ;# by default will create an untitled blog post with status=draft
+ % wp-xmlrpc wp.newPost '{"post_content":"This is a test blog post", "post_status":"publish", "post_title":"Some title"}' ;# set title & status
+
+ % wp-xmlrpc wp.editPost 13 '{"status":"draft"}'
+
+ % wp-xmlrpc wp.deletePost 13
+
+
+ % wp-xmlrpc wp.getTaxonomies
+
+ % wp-xmlrpc wp.getTaxonomy category
+ % wp-xmlrpc wp.getTaxonomy post_tag
+ % wp-xmlrpc wp.getTaxonomy post_format
+ % wp-xmlrpc wp.getTaxonomy mentions
+
+ % wp-xmlrpc wp.getTerms category ;# get terms (i.e. in this case list of categories)
+ % wp-xmlrpc wp.getTerm category 2342 ;# get a specific category by ID
+ % wp-xmlrpc wp.getTerm tag 423 ;# get a specific tag by ID
+
+ % wp-xmlrpc wp.newTerm '{"taxonomy":"tag", "name":"tag3"}' ;# create a new tag
+ % wp-xmlrpc wp.newTerm '{"taxonomy":"category", "name":"cat2", "description":"Second category", "parent":2342}' ;# create a new category, with description and parent ID
+
+ % wp-xmlrpc wp.editTerm 2345 '{"description":"New description"}' ;# create a category's description
+
+ % wp-xmlrpc wp.deleteTerm 2345
+
+ % wp-xmlrpc wp.getComments ;# list comments
+ % wp-xmlrpc wp.getCommentCount 13 ;# get number of comments for a post
+ % wp-xmlrpc wp.getComment 9983 ;# get a comment by ID
+
+ % wp-xmlrpc wp.getOptions ;# get all options
+ % wp-xmlrpc wp.getOptions '["blog_title","blog_tagline"]' ;# get specified options only
+ % wp-xmlrpc wp.setOptions '{"blog_title":"New title", "blog_tagline":"New tagline"}'
+
+ % wp-xmlrpc wp.getProfile
+ % wp-xmlrpc wp.editProfile '{"bio":"Blah blah blah"}'
+
+
+=head1 DESCRIPTION
+
+This is a very thin layer of WordPress XML-RPC API, mainly for
+testing/debugging.
+
+
+=head1 SEE ALSO
+
+API reference: L<https://codex.wordpress.org/XML-RPC_WordPress_API>
+
+L<wordpress-info>, L<wordpress-upload-media>, L<wordpress-upload-post> from
+L<WordPress::CLI> distribution.
