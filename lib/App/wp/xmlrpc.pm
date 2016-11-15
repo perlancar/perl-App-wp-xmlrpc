@@ -222,7 +222,7 @@ GENERATE_API_FUNCTIONS: {
 } # GENERATE_API_FUNCTIONS
 
 1;
-#ABSTRACT: A thin CLI for accessing WordPress XML-RPC API
+#ABSTRACT: A thin layer of CLI over WordPress XML-RPC API
 
 =head1 SYNOPSIS
 

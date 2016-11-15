@@ -21,7 +21,7 @@ Perinci::CmdLine::Any->new(
     subcommands => $subcommands,
 )->run;
 
-# ABSTRACT: A thin CLI for accessing WordPress XML-RPC API
+# ABSTRACT: A thin layer of CLI over WordPress XML-RPC API
 # PODNAME:
 
 =head1 SYNOPSIS
@@ -99,8 +99,11 @@ Some of the functions:
 
 =head1 DESCRIPTION
 
-This is a very thin layer of WordPress XML-RPC API, mainly for
-testing/debugging.
+This script is a thin layer of CLI over WordPress XML-RPC API, mainly for
+testing/debugging. Each CLI subcommand is for calling API method of the same
+name. If an argument starts with C<{> it will be assumed as a JSON-encoded hash
+and will be decoded. If an argument starts with C<[> it will be assumed as a
+JSON-encoded array and will be decoded.
 
 
 =head1 SEE ALSO
@@ -108,4 +111,4 @@ testing/debugging.
 API reference: L<https://codex.wordpress.org/XML-RPC_WordPress_API>
 
 L<wordpress-info>, L<wordpress-upload-media>, L<wordpress-upload-post> from
-L<WordPress::CLI> distribution.
+the L<WordPress::CLI> distribution.
