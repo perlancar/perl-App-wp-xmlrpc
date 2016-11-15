@@ -1,5 +1,12 @@
 Revision history for App-wp-xmlrpc
 
+0.002   2016-11-15 (PERLANCAR)
+
+	- No functional changes.
+
+	- [doc] Tweak Abstract, add more text to Description.
+
+
 0.001   2016-11-14 (PERLANCAR)
 
         - First release.
