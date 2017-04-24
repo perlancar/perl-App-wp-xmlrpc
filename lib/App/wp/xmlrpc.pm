@@ -71,121 +71,187 @@ sub _api {
 
 our %API_Methods = (
     # Posts
-    'wp.getPost' => {args => [
-        ['post_id*', {schema=>'posint*'}],
-        ['fields',   {schema=>'str*'}],
-    ]},
-    'wp.getPosts' => {args => [
-        ['filter',   {schema=>'str*'}],
-    ]},
-    'wp.newPost' => {args => [
-        ['content*', {schema=>'str*'}],
-    ]},
-    'wp.editPost' => {args => [
-        ['content*', {schema=>'str*'}],
-    ]},
-    'wp.deletePost' => {args => [
-        ['post_id*', {schema=>'posint*'}],
-    ]},
-    'wp.getPostType' => {args => [
-        ['post_type_name*', {schema=>'str*'}],
-        ['fields', {schema=>'str*'}],
-    ]},
-    'wp.getPostTypes' => {args => [
-        ['filter', {schema=>'str*'}],
-        ['fields', {schema=>'str*'}],
-    ]},
-    'wp.getPostFormats' => {args => [
-        ['filter', {schema=>'str*'}],
-    ]},
-    'wp.getPostStatusList' => {args => [
-    ]},
+    'wp.getPost' => {
+        args => [
+            ['post_id*', {schema=>'posint*'}],
+            ['fields',   {schema=>'str*'}],
+        ],
+    },
+    'wp.getPosts' => {
+        args => [
+            ['filter',   {schema=>'str*'}],
+        ],
+    },
+    'wp.newPost' => {
+        args => [
+            ['content*', {schema=>'str*'}],
+        ],
+    },
+    'wp.editPost' => {
+        args => [
+            ['content*', {schema=>'str*'}],
+        ],
+    },
+    'wp.deletePost' => {
+        args => [
+            ['post_id*', {schema=>'posint*'}],
+        ],
+    },
+    'wp.getPostType' => {
+        args => [
+            ['post_type_name*', {schema=>'str*'}],
+            ['fields', {schema=>'str*'}],
+        ],
+    },
+    'wp.getPostTypes' => {
+        args => [
+            ['filter', {schema=>'str*'}],
+            ['fields', {schema=>'str*'}],
+        ],
+    },
+    'wp.getPostFormats' => {
+        args => [
+            ['filter', {schema=>'str*'}],
+        ],
+    },
+    'wp.getPostStatusList' => {
+        args => [
+        ],
+    },
 
     # Taxonomies
-    'wp.getTaxonomy' => {args => [
-        ['taxonomy*', {schema=>'str*'}],
-    ]},
-    'wp.getTaxonomies' => {args => [
-    ]},
-    'wp.getTerm' => {args => [
-        ['taxonomy*', {schema=>'str*'}],
-        ['term_id*', {schema=>'posint*'}],
-    ]},
-    'wp.getTerms' => {args => [
-        ['taxonomy*', {schema=>'str*'}],
-    ]},
-    'wp.newTerm' => {args => [
-        ['content*', {schema=>'str*'}],
-    ]},
-    'wp.editTerm' => {args => [
-        ['term_id*', {schema=>'posint*'}],
-        ['content*', {schema=>'str*'}],
-    ]},
-    'wp.deleteTerm' => {args => [
-        ['term_id*', {schema=>'posint*'}],
-    ]},
+    'wp.getTaxonomy' => {
+        args => [
+            ['taxonomy*', {schema=>'str*'}],
+        ],
+    },
+    'wp.getTaxonomies' => {
+        args => [
+        ],
+    },
+    'wp.getTerm' => {
+        args => [
+            ['taxonomy*', {schema=>'str*'}],
+            ['term_id*', {schema=>'posint*'}],
+        ],
+    },
+    'wp.getTerms' => {
+        args => [
+            ['taxonomy*', {schema=>'str*'}],
+        ],
+    },
+    'wp.newTerm' => {
+        args => [
+            ['content*', {schema=>'str*'}],
+        ],
+    },
+    'wp.editTerm' => {
+        args => [
+            ['term_id*', {schema=>'posint*'}],
+            ['content*', {schema=>'str*'}],
+        ],
+    },
+    'wp.deleteTerm' => {
+        args => [
+            ['term_id*', {schema=>'posint*'}],
+        ],
+    },
 
     # Media
-    'wp.getMediaItem' => {args => [
-        ['attachment_id*', {schema=>'posint*'}],
-    ]},
-    'wp.getMediaLibrary' => {args => [
-        ['filter', {schema=>'str*'}],
-    ]},
+    'wp.getMediaItem' => {
+        args => [
+            ['attachment_id*', {schema=>'posint*'}],
+        ],
+    },
+    'wp.getMediaLibrary' => {
+        args => [
+            ['filter', {schema=>'str*'}],
+        ],
+    },
     # TODO: wp.uploadFile
 
     # Comments
-    'wp.getCommentCount' => {args => [
-        ['post_id*', {schema=>'posint*'}],
-    ]},
-    'wp.getComment' => {args => [
-        ['comment_id*', {schema=>'posint*'}],
-    ]},
-    'wp.getComments' => {args => [
-        ['filter', {schema=>'str*'}],
-    ]},
-    'wp.newComment' => {args => [
-        ['post_id*', {schema=>'posint*'}],
-        ['comment*', {schema=>'str*'}],
-    ]},
-    'wp.editComment' => {args => [
-        ['comment_id*', {schema=>'posint*'}],
-        ['comment*', {schema=>'str*'}],
-    ]},
-    'wp.deleteComment' => {args => [
-        ['comment_id*', {schema=>'posint*'}],
-    ]},
-    'wp.getCommentStatusList' => {args => [
-    ]},
+    'wp.getCommentCount' => {
+        args => [
+            ['post_id*', {schema=>'posint*'}],
+        ],
+    },
+    'wp.getComment' => {
+        args => [
+            ['comment_id*', {schema=>'posint*'}],
+        ],
+    },
+    'wp.getComments' => {
+        args => [
+            ['filter', {schema=>'str*'}],
+        ],
+    },
+    'wp.newComment' => {
+        args => [
+            ['post_id*', {schema=>'posint*'}],
+            ['comment*', {schema=>'str*'}],
+        ],
+    },
+    'wp.editComment' => {
+        args => [
+            ['comment_id*', {schema=>'posint*'}],
+            ['comment*', {schema=>'str*'}],
+        ],
+    },
+    'wp.deleteComment' => {
+        args => [
+            ['comment_id*', {schema=>'posint*'}],
+        ],
+    },
+    'wp.getCommentStatusList' => {
+        args => [
+        ],
+    },
 
     # Options
-    'wp.getOptions' => {args => [
-        ['options', {schema=>'str*'}],
-    ]},
-    'wp.setOptions' => {args => [
-        ['options*', {schema=>'str*'}],
-    ]},
+    'wp.getOptions' => {
+        args => [
+            ['options', {schema=>'str*'}],
+        ],
+    },
+    'wp.setOptions' => {
+        args => [
+            ['options*', {schema=>'str*'}],
+        ],
+    },
 
     # Users
-    'wp.getUsersBlogs' => {args => [
-        ['xmlrpc*', {schema=>'str*'}],
-        ['isAdmin*', {schema=>'bool*'}],
-    ]},
-    'wp.getUser' => {args => [
-        ['user_id*', {schema=>'posint*'}],
-        ['fields', {schema=>'str*'}],
-    ]},
-    'wp.getUsers' => {args => [
-        ['fields', {schema=>'str*'}],
-    ]},
-    'wp.getProfile' => {args => [
-        ['fields', {schema=>'str*'}],
-    ]},
-    'wp.editProfile' => {args => [
-        ['content*', {schema=>'str*'}],
-    ]},
-    'wp.getAuthors' => {args => [
-    ]},
+    'wp.getUsersBlogs' => {
+        args => [
+            ['xmlrpc*', {schema=>'str*'}],
+            ['isAdmin*', {schema=>'bool*'}],
+        ],
+    },
+    'wp.getUser' => {
+        args => [
+            ['user_id*', {schema=>'posint*'}],
+            ['fields', {schema=>'str*'}],
+        ],
+    },
+    'wp.getUsers' => {
+        args => [
+            ['fields', {schema=>'str*'}],
+        ],
+    },
+    'wp.getProfile' => {
+        args => [
+            ['fields', {schema=>'str*'}],
+        ],
+    },
+    'wp.editProfile' => {
+        args => [
+            ['content*', {schema=>'str*'}],
+        ],
+    },
+    'wp.getAuthors' => {
+        args => [
+        ],
+    },
 );
 
 GENERATE_API_FUNCTIONS: {
