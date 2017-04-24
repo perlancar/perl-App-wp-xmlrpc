@@ -1,3 +1,10 @@
+0.003   2017-04-24 (PERLANCAR)
+
+	- No functional changes.
+
+	- Show how to (not) use App::wp::xmlrpc [RT#121337].
+
+
 0.002   2016-11-15 (PERLANCAR)
 
 	- No functional changes.
