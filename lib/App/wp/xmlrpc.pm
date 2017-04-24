@@ -295,7 +295,7 @@ GENERATE_API_FUNCTIONS: {
 
 This module is meant to be used only via the included CLI script L<wp-xmlrpc>.
 If you want to make XML-RPC calls to a WordPress website, you can use
-L<XMLRCCP::Lite> directly, e.g. to delete a comment with ID 13:
+L<XMLRPC::Lite> directly, e.g. to delete a comment with ID 13:
 
  use XMLRPC::Lite;
  my $call = XMLRPC::Lite->proxy("http://example.org/yourblog")->call(
