@@ -278,6 +278,7 @@ GENERATE_API_FUNCTIONS: {
                 pos => $pos,
             };
         }
+        $meta->{examples} = $apispec->{examples} if $apispec->{examples};
         *{$funcname} = sub {
             my %args = @_;
             _convert_args_to_struct(\%args);
@@ -292,7 +293,25 @@ GENERATE_API_FUNCTIONS: {
 
 =head1 SYNOPSIS
 
-See L<wp-xmlrpc>.
+This module is meant to be used only via the included CLI script L<wp-xmlrpc>.
+If you want to make XML-RPC calls to a WordPress website, you can use
+L<XMLRCCP::Lite> directly, e.g. to delete a comment with ID 13:
+
+ use XMLRPC::Lite;
+ my $call = XMLRPC::Lite->proxy("http://example.org/yourblog")->call(
+     "wp.deleteComment", # method
+     1, # blog ID, usually just set to 1
+     "username",
+     "password",
+     13,
+ );
+ my $fault = $call->fault;
+ if ($fault && $fault->{faultCode}) {
+     die "Can't delete comment: $fault->{faultCode} - $fault->{faultString}";
+ }
+
+To find the list of available methods and arguments, see the WordPress API
+reference (see L</"SEE ALSO">).
 
 
 =head1 SEE ALSO
@@ -308,3 +327,5 @@ incomplete).
 Other WordPress API CLI on CPAN: L<wordpress-info>, L<wordpress-upload-media>,
 L<wordpress-upload-post> (from L<WordPress::CLI> distribution, also by Leo
 Charre).
+
+L<XMLRPC::Lite>
