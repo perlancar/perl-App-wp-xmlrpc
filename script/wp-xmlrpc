@@ -19,6 +19,7 @@ for my $meth (keys %App::wp::xmlrpc::API_Methods) {
 Perinci::CmdLine::Any->new(
     url => '/App/wp/xmlrpc/',
     subcommands => $subcommands,
+    log => 1,
 )->run;
 
 # ABSTRACT: A thin layer of CLI over WordPress XML-RPC API
